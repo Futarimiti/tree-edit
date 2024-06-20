@@ -1,5 +1,5 @@
 module System.File.Tree.Basename
-  ( Basename (..)
+  ( Basename
   , basename
   ) where
 

@@ -6,6 +6,13 @@ import System.File.Tree.Basename.Type
 import Control.Applicative ((<|>), some)
 
 -- | Extract the basename of the given file/directory.
+--
+-- >>> readP_to_S basename ""
+-- []
+-- >>> readP_to_S basename "/"
+-- [("/", "")]
+-- >>> readP_to_S basename "~/.vimrc"
+-- [(".vimrc", "")]
 basename :: ReadP Basename
 basename = root <|> do
   optional parentDirectory

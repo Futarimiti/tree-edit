@@ -8,4 +8,4 @@ module System.File.Tree.Basename.Type (Basename (..)) where
 -- Note: unlike @takeBaseName@ from @filepath@ package
 -- (where file extension is stripped), extension will always be kept.
 newtype Basename = Basename { getBasename :: FilePath }
-  deriving (Show, Read, Eq, Ord)
+  deriving (Show, Read, Eq, Ord) via FilePath
