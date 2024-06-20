@@ -29,8 +29,9 @@ library
     DerivingVia
     PatternSynonyms
     StrictData
-    TypeApplication
+    TypeApplications
     ViewPatterns
+    LambdaCase
 
   -- cabal-fmt: expand lib
   exposed-modules:
