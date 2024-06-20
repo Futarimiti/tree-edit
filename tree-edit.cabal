@@ -57,3 +57,4 @@ test-suite tree-edit-test
   build-depends:
     , base
     , tree-edit
+    , HUnit
