@@ -21,16 +21,25 @@ common warnings
   ghc-options: -Wall
 
 library
-  import:           warnings
+  import:             warnings
+  default-extensions:
+    DataKinds
+    DeriveAnyClass
+    DerivingStrategies
+    DerivingVia
+    PatternSynonyms
+    StrictData
+    TypeApplication
+    ViewPatterns
 
   -- cabal-fmt: expand lib
   exposed-modules:
 
   -- other-modules:
   -- other-extensions:
-  build-depends:    base
-  hs-source-dirs:   lib
-  default-language: GHC2021
+  build-depends:      base
+  hs-source-dirs:     lib
+  default-language:   GHC2021
 
 executable tree-edit
   import:           warnings
@@ -56,5 +65,5 @@ test-suite tree-edit-test
   main-is:          Main.hs
   build-depends:
     , base
-    , tree-edit
     , HUnit
+    , tree-edit
