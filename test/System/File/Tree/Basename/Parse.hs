@@ -7,7 +7,7 @@ import           Test.HUnit
 -- Returns @Nothing@ upon fail (ambiguous result or no parse)
 extractBasename :: FilePath -> Maybe String
 extractBasename path
-  | [(Basename bn, "")] <- readP_to_S parser path = Just bn
+  | [(bn, "")] <- readP_to_S parser path = Just (getBasename bn)
   | otherwise = Nothing
   where parser = do
           bn <- basename

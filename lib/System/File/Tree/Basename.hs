@@ -1,5 +1,6 @@
 module System.File.Tree.Basename
   ( Basename
+  , getBasename
   , basename
   ) where
 
