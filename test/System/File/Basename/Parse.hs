@@ -1,6 +1,6 @@
-module System.File.Tree.Basename.Parse (basenameParseTests) where
+module System.File.Basename.Parse (basenameParseTests) where
 
-import           "tree-edit" System.File.Tree.Basename
+import           "tree-edit" System.File.Basename
 import           Text.ParserCombinators.ReadP
 import           Test.HUnit
 

@@ -1,8 +1,8 @@
 module Main (main) where
 
-import qualified System.Exit                     as Exit
-import           System.File.Tree.Basename.Parse (basenameParseTests)
-import           System.File.Tree.IO             (treeCreatingTests)
+import qualified System.Exit                as Exit
+import           System.File.Basename.Parse (basenameParseTests)
+import           System.File.Tree.IO        (treeCreatingTests)
 import           Test.HUnit
 
 main :: IO ()

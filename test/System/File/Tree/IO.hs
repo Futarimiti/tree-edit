@@ -2,9 +2,10 @@ module System.File.Tree.IO (treeCreatingTests) where
 
 import           Control.Monad.Catch
 import           Control.Monad.Logger
-import           Data.List                    (sort)
+import           Data.List                        (sort)
 import           Data.Maybe
 import           Paths_tree_edit
+import           "tree-edit" System.File.Basename
 import           "tree-edit" System.File.Tree
 import           Test.HUnit
 import           Text.ParserCombinators.ReadP

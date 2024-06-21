@@ -1,4 +1,4 @@
-module System.File.Tree.Basename.Type (Basename (..)) where
+module System.File.Basename.Type (Basename (..)) where
 
 -- | The last name from a pathname ignoring any trailing slashes.
 -- Does not include the trailing slash for directories.

@@ -6,7 +6,7 @@ import           Control.Monad.Catch
 import           Control.Monad.IO.Class
 import           Control.Monad.Logger
 import           System.Directory
-import           System.File.Tree.Basename
+import           System.File.Basename
 import           System.File.Tree.Exceptions
 import           System.File.Tree.Type
 import           System.FilePath

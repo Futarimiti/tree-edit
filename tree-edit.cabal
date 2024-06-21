@@ -41,12 +41,12 @@ library
   -- cabal-fmt: expand lib
   exposed-modules:
     Paths_tree_edit
+    System.File.Basename
+    System.File.Basename.Parse
+    System.File.Basename.Type
     System.File.Edit
     System.File.Edit.Type
     System.File.Tree
-    System.File.Tree.Basename
-    System.File.Tree.Basename.Parse
-    System.File.Tree.Basename.Type
     System.File.Tree.Exceptions
     System.File.Tree.IO
     System.File.Tree.Type
@@ -90,7 +90,7 @@ test-suite tree-edit-test
   default-language:   GHC2021
   other-modules:
     Paths_tree_edit
-    System.File.Tree.Basename.Parse
+    System.File.Basename.Parse
     System.File.Tree.IO
 
   default-extensions:

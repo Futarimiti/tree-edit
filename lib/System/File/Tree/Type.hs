@@ -1,6 +1,6 @@
 module System.File.Tree.Type where
 
-import           System.File.Tree.Basename
+import           System.File.Basename
 
 data FileTree = File Basename
               | Directory Basename [FileTree]
