@@ -6,7 +6,7 @@ import           Data.List                        (sort)
 import           Data.Maybe
 import           Paths_tree_edit
 import           "tree-edit" System.File.Basename
-import           "tree-edit" System.File.Tree
+import           "tree-edit" System.File.Tree     as FileTree
 import           Test.HUnit
 import           Text.ParserCombinators.ReadP
 
@@ -19,7 +19,7 @@ treeCreatingTests = TestList
 testTreeGeneration :: Test
 testTreeGeneration = TestCase $ do
   testDir <- getDataFileName "test-directory"
-  actual <- runStderrLoggingT $ fromFilePath testDir
+  actual <- runStderrLoggingT $ FileTree.fromFilePath testDir
   let expected = testDirectoryTree
   if | Directory expectedBn expectedSubtrees <- expected
      , Directory actualBn actualSubtrees <- actual
@@ -72,7 +72,7 @@ createTree :: FilePath -> IO (Maybe FileTree)
 createTree path = runNoLoggingT $ do
   let handler :: SomeException -> NoLoggingT IO (Maybe FileTree)
       handler _ = pure Nothing
-  tree <- catch (Just <$> fromFilePath path) handler
+  tree <- catch (Just <$> Tree.fromFilePath path) handler
   pure tree
 
 mkBasename :: FilePath -> Maybe Basename
