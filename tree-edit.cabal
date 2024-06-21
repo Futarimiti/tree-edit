@@ -14,6 +14,7 @@ maintainer:      Futarimiti@163.com
 category:        System
 build-type:      Simple
 extra-doc-files: none
+data-dir:        resources/
 
 -- extra-source-files:
 
@@ -28,31 +29,42 @@ library
     DerivingStrategies
     DerivingVia
     FunctionalDependencies
+    GADTs
     LambdaCase
     PatternSynonyms
     StrictData
+    TemplateHaskell
     TypeApplications
     TypeFamilies
     ViewPatterns
 
   -- cabal-fmt: expand lib
   exposed-modules:
+    Paths_tree_edit
+    System.File.Edit
+    System.File.Edit.Type
     System.File.Tree
     System.File.Tree.Basename
     System.File.Tree.Basename.Parse
     System.File.Tree.Basename.Type
+    System.File.Tree.Exceptions
+    System.File.Tree.IO
+    System.File.Tree.Type
 
   -- other-modules:
   -- other-extensions:
   build-depends:
     , base
+    , containers
     , directory
     , exceptions
     , filepath
     , monad-logger
     , mtl
     , temporary
+    , text
     , transformers
+    , typed-process
     , yaml
 
   hs-source-dirs:     lib
@@ -76,8 +88,14 @@ executable tree-edit
 test-suite tree-edit-test
   import:             warnings
   default-language:   GHC2021
-  other-modules:      System.File.Tree.Basename.Parse
-  default-extensions: PackageImports
+  other-modules:
+    Paths_tree_edit
+    System.File.Tree.Basename.Parse
+    System.File.Tree.IO
+
+  default-extensions:
+    MultiWayIf
+    PackageImports
 
   -- other-extensions:
   type:               exitcode-stdio-1.0
@@ -85,5 +103,8 @@ test-suite tree-edit-test
   main-is:            Main.hs
   build-depends:
     , base
+    , containers
+    , exceptions
     , HUnit
+    , monad-logger
     , tree-edit
