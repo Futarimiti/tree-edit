@@ -47,6 +47,10 @@ library
     System.File.Edit
     System.File.Edit.Type
     System.File.Tree
+    System.File.Tree.Decode
+    System.File.Tree.Decode.Type
+    System.File.Tree.Encode
+    System.File.Tree.Encode.Type
     System.File.Tree.Exceptions
     System.File.Tree.IO
     System.File.Tree.Type
