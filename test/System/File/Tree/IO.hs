@@ -72,7 +72,7 @@ createTree :: FilePath -> IO (Maybe FileTree)
 createTree path = runNoLoggingT $ do
   let handler :: SomeException -> NoLoggingT IO (Maybe FileTree)
       handler _ = pure Nothing
-  tree <- catch (Just <$> Tree.fromFilePath path) handler
+  tree <- catch (Just <$> FileTree.fromFilePath path) handler
   pure tree
 
 mkBasename :: FilePath -> Maybe Basename
