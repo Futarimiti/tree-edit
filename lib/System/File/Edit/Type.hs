@@ -7,10 +7,7 @@ newtype ExternalEditor = ExternalEditor
   { process :: FilePath -> ProcessConfig () () () }
 
 class CanEdit editor where
-  editFile :: forall io. MonadIO io
-           => FilePath
-           -> editor
-           -> io ()
+  editFile :: MonadIO io => FilePath -> editor -> io ()
 
 instance CanEdit ExternalEditor where
   editFile file editor = do
