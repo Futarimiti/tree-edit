@@ -29,7 +29,7 @@ failOnNullInput = TestCase $ assertEqual
 
 usualCases :: Test
 usualCases = TestList
-  [ TestCase $ Just "abc" @=? (extractBasename "abc")
+  [ TestCase $ Just "abc" @=? extractBasename "abc"
   , TestCase $ Just "/" @=? (extractBasename "/")
   , TestCase $ Just "def" @=? (extractBasename "/abc/def")
   , TestCase $ Just ".vimrc" @=? (extractBasename "$HOME/.vimrc")

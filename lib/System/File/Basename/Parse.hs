@@ -1,9 +1,25 @@
-module System.File.Basename.Parse (basename) where
+module System.File.Basename.Parse
+  ( basename
+  , parseBasename
+  ) where
 
-import qualified System.FilePath as FilePath
-import Text.ParserCombinators.ReadP
-import System.File.Basename.Type
-import Control.Applicative ((<|>), some)
+import           Control.Applicative          (some, (<|>))
+import           Control.Monad.Catch
+import           System.File.Basename.Type
+import           System.File.Tree.Exceptions
+import qualified System.FilePath              as FilePath
+import           Text.ParserCombinators.ReadP
+
+parseBasename :: MonadThrow m => String -> m Basename
+parseBasename s = case readP_to_S parser s of
+                    [(bn, "")] -> return bn
+                    [] -> throwM (IllegalArgument $ "Cannot parse basename of '" ++ s ++ "' (0 results)")
+                    _ -> throwM (IllegalArgument $ "Cannot parse basename of '" ++ s ++ "' (ambiguous results)")
+  where parser = do
+          bn <- basename
+          eof
+          pure bn
+
 
 -- | Extract the basename of the given file/directory.
 --

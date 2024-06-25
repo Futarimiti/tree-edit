@@ -25,6 +25,7 @@ library
   import:             warnings
   default-extensions:
     DataKinds
+    DefaultSignatures
     DeriveAnyClass
     DerivingStrategies
     DerivingVia
@@ -51,25 +52,31 @@ library
     System.File.Tree.Decode.Type
     System.File.Tree.Encode
     System.File.Tree.Encode.Type
+    System.File.Tree.Encode.Yaml
+    System.File.Tree.Encode.Yaml.Config
     System.File.Tree.Exceptions
     System.File.Tree.IO
     System.File.Tree.Type
 
+  autogen-modules:    Paths_tree_edit
+
   -- other-modules:
   -- other-extensions:
   build-depends:
-    , base
-    , containers
-    , directory
-    , exceptions
-    , filepath
-    , monad-logger
-    , mtl
-    , temporary
-    , text
-    , transformers
-    , typed-process
-    , yaml
+    , aeson          >=2.2.3   && <2.3
+    , base           >=4.17.2  && <4.18
+    , containers     >=0.6.7   && <0.7
+    , directory      >=1.3.7   && <1.4
+    , exceptions     >=0.10.5  && <0.11
+    , filepath       >=1.4.2   && <1.5
+    , monad-logger   >=0.3.40  && <0.4
+    , mtl            >=2.2.2   && <2.3
+    , temporary      >=1.3     && <1.4
+    , text           >=2.0.2   && <2.1
+    , transformers   >=0.5.6   && <0.6
+    , typed-process  >=0.2.11  && <0.3
+    , vector         >=0.13.1  && <0.14
+    , yaml           >=0.11.11 && <0.12
 
   hs-source-dirs:     lib
   default-language:   GHC2021
@@ -81,9 +88,9 @@ executable tree-edit
   -- other-modules:
   -- other-extensions:
   build-depends:
-    , base
-    , monad-logger
-    , optparse-applicative
+    , base                  >=4.17.2 && <4.18
+    , monad-logger          >=0.3.40 && <0.4
+    , optparse-applicative  >=0.18.1 && <0.19
     , tree-edit
 
   hs-source-dirs:   app
@@ -96,6 +103,7 @@ test-suite tree-edit-test
     Paths_tree_edit
     System.File.Basename.Parse
     System.File.Tree.IO
+    System.File.Tree.Type
 
   default-extensions:
     MultiWayIf
@@ -106,9 +114,12 @@ test-suite tree-edit-test
   hs-source-dirs:     test
   main-is:            Main.hs
   build-depends:
-    , base
-    , containers
-    , exceptions
+    , aeson         >=2.2.3  && <2.3
+    , base          >=4.17.2 && <4.18
+    , containers    >=0.6.7  && <0.7
+    , exceptions    >=0.10.5 && <0.11
     , HUnit
-    , monad-logger
+    , monad-logger  >=0.3.40 && <0.4
+    , text          >=2.0.2  && <2.1
     , tree-edit
+    , vector        >=0.13.1 && <0.14

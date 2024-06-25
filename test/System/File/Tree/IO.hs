@@ -8,7 +8,6 @@ import           Paths_tree_edit
 import           "tree-edit" System.File.Basename
 import           "tree-edit" System.File.Tree     as FileTree
 import           Test.HUnit
-import           Text.ParserCombinators.ReadP
 
 treeCreatingTests :: Test
 treeCreatingTests = TestList
@@ -19,7 +18,7 @@ treeCreatingTests = TestList
 testTreeGeneration :: Test
 testTreeGeneration = TestCase $ do
   testDir <- getDataFileName "test-directory"
-  actual <- runStderrLoggingT $ FileTree.fromFilePath testDir
+  actual <- runNoLoggingT $ FileTree.fromFilePath testDir
   let expected = testDirectoryTree
   if | Directory expectedBn expectedSubtrees <- expected
      , Directory actualBn actualSubtrees <- actual
@@ -41,6 +40,7 @@ testTreeGeneration = TestCase $ do
 -}
 testDirectoryTree :: FileTree
 testDirectoryTree = fromJust $ do
+  let mkBasename = parseBasename
   -- basenames
   test_directory <- mkBasename "test-directory"
   dir1 <- mkBasename "dir1"
@@ -74,12 +74,3 @@ createTree path = runNoLoggingT $ do
       handler _ = pure Nothing
   tree <- catch (Just <$> FileTree.fromFilePath path) handler
   pure tree
-
-mkBasename :: FilePath -> Maybe Basename
-mkBasename path = case readP_to_S parser path of
-                    [(bn, "")] -> Just bn
-                    _          -> Nothing
-                    where parser = do
-                            bn <- basename
-                            eof
-                            pure bn
